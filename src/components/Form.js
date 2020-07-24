@@ -1,38 +1,43 @@
 import React from 'react'
+import OrderComplete from './OrderComplete'
 
 const Form = (props) => {
 
     const {
         values,
-        submit,
+        post,
         inputChange,
         checkboxChange,
         errors,
         disabled,
+        users
     } = props
+    
+    console.log('WHAT THE PROPS')
+    console.log(props)
 
-    const onSubmit = evt => {
-        evt.preventDefault()
-        submit()
-      }
-
-      const onCheckboxChange = evt => {
-        const { name, checked } = evt.target
-        checkboxChange(name, checked)
-      }
-
-      const onInputChange = evt => {
+    const onInputChange = evt => {
         const { name, value } = evt.target
         inputChange(name, value)
       }
 
+    const onSubmit = evt => {
+        evt.preventDefault()
+        post()
+      }
+
+    const onCheckboxChange = evt => {
+        const { name, checked } = evt.target
+        checkboxChange(name, checked)
+      }
+
     return (
-        <div className='form container' onSubmit={onSubmit}>
+        <form className='form container' onSubmit={onSubmit}>
             <div id='formheader'>
             <h2>Build Your Own Pizza</h2>
 
             <div>
-                <h3>Please complete this form to continue:</h3>
+                <h3>Please complete this form to continue. All pizzas come with fresh mozzerella cheese.</h3>
             </div>
 
             <div className='register-form inputs'>
@@ -56,7 +61,7 @@ const Form = (props) => {
                         name='sauces'
                     >
                         <option value=''>- Select a sauce-</option>
-                        <option value='marinara'>marinara</option>
+                        <option value='marinara'>Marinara</option>
                         <option value='pesto'>Pesto</option>
                         <option value='clam'>Clam</option>
                         <option value='white garlic'>White Garlic</option>
@@ -73,7 +78,7 @@ const Form = (props) => {
                         name='toppings'
                     >
                         <option value=''>- Select a Topping-</option>
-                        <option value='cheese'>marinara</option>
+                        <option value='vegetables'>Vegetables</option>
                         <option value='pepperoni'>Pepperoni</option>
                         <option value='clams'>Clams</option>
                         <option value='ricotta'>Ricotta</option>
@@ -94,9 +99,7 @@ const Form = (props) => {
                 <p id='instructions-error'>{errors.instructions}</p>
                 </div>
 
-                <div id='inputBoxes'className='input-box'>
-                <div id='termsBox'className='input-box'>
-                    
+                <div id='glutenBox'className='input-box'>
                 <label> Make this gluten-free? &nbsp;
                     <input
                         type="checkbox"
@@ -105,14 +108,21 @@ const Form = (props) => {
                         onChange={onCheckboxChange}
                     />
                 </label>
-                <p id='gluten-error'>{errors.gluten}</p>
                 </div>
 
                 <div>
-                    <button id='orderBtn' disabled={disabled}>Order Now</button>
+                    <br></br>
+                    <button id="submitBtn" disabled={disabled}>Place Order</button>
                 </div>
-            </div>
-        </div>
+
+                {
+                    users.map(user => {
+                        return <OrderComplete key={user.name} details={user} />
+                    })
+                } 
+            </form>
+
+            
     );
 };
 export default Form
