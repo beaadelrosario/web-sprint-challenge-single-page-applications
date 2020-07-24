@@ -1,8 +1,4 @@
 import React from 'react'
-// import axios from 'axios'
-// import * as yup from 'yup'
-// import formSchema from '../validation/FormSchema'
-// import Pizza from './Pizza'
 
 const Form = (props) => {
 

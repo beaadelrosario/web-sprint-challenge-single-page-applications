@@ -1,9 +1,8 @@
 import React, {useState,useEffect} from 'react'
 import axios from 'axios'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
 import PizzaStock from './PizzaStock.jpg'
-// import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Form from './Form'
 import Pizza from './Pizza'
 import formSchema from '../validation/FormSchema'
@@ -97,13 +96,6 @@ const Home = () => {
 
     return (
     <div>
-        <nav>
-            <h1 className='store-header'>Lambda Eats</h1>
-
-            <div className='nav-links'>
-                <Link to='/form'>Build Your Own</Link>
-            </div>
-        </nav>
 
         <div className='body'>
             <p>All of Lambda’s pizzas are prepared on a New York style crust with a slightly thicker edge & cooked golden brown. Completely customize your pizza using our Pizza Builder Tool. Start building your own pizza today!</p>
@@ -120,7 +112,7 @@ const Home = () => {
       submit={submit}
       disabled={disabled}
       errors={formErrors}
-    //   post={postUser}
+      post={postUser}
       />
 
       {
@@ -132,7 +124,9 @@ const Home = () => {
       }
         </div>
       </div>
-        {/* <Switch>
+
+      
+        <Switch>
     <Route path='/pizza'>
         <Pizza />
       </Route>
@@ -141,10 +135,10 @@ const Home = () => {
         <Form />
       </Route>
 
-      <Route path='/'>
+      {/* <Route path='/'>
         <Home />
-      </Route>
-    </Switch> */}
+      </Route> */}
+    </Switch>
     </div>
     );
 };
