@@ -6,11 +6,23 @@ export default function OrderComplete({details}) {
   
     return (
       <div>  
+        <br></br>
         <div>Customer Name: {details.name}</div>
+        <div>Size: {details.size}</div>
         <div>Sauce: {details.sauces}</div>
-        <div>Topping:{details.toppings}</div>
+
+        {
+          !!details.toppings && !!details.toppings.length &&
+          <div>
+            Toppings:
+            <ul>
+                {details.toppings.map((like, idx) => 
+                <li key={idx}>{like}</li>)}
+              </ul>
+          </div>
+        }
+    
         <div>Special Instructions:{details.instructions}</div>
-        <div>Make Gluten Free? {details.gluten}</div>
       </div>
     )
   }

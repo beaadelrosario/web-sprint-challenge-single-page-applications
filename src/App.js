@@ -10,22 +10,38 @@ import Styled from 'styled-components'
 
 const StyledHome = Styled.div`
     text-align:center;
-    margin: 5% 25%;
+    margin: 5% 15%;
     padding: 5% 10%;
-    background-color:#BFBFBB;
+    background-color:black;
+    color: white;
+    padding: 5% 1%;
+    border: 12px solid red;
+
+    h1 {
+        font-size: 4em;
+        color: red;
+        font-family:times;
+    }
+
 `
 const initialFormValues = {
   name: '',// input text field
+  size:'',
   sauces: '', // dropdown
-  toppings: '', // dropdown
+  toppings: {
+    Pepperoni: false,
+    Clams: false,
+    Pineapple: false,
+    Veggies: false
+  }, // checkboxes
   instructions: '', // input text field
-  gluten: false, // checkbox
 }
 
 const initialFormErrors = {
   name:'',// input text field
+  size:'',
   sauces: '', // dropdown
-  toppings: '', // dropdown
+  toppings: '', 
   instructions: '', // input text field
 }
 
@@ -42,10 +58,10 @@ const App = () => {
   const postUser = (users) => {
     const newPizza = {
       name: formValues.name,
+      size:formValues.size,
       sauces: formValues.sauces,
       toppings: formValues.toppings,
       instructions: formValues.instructions,
-      gluten: formValues.gluten,
     }
 
     axios.post('https://reqres.in/api/users', newPizza)
@@ -84,20 +100,26 @@ const App = () => {
     })
   }
 
-    const checkboxChange = (name, isChecked) => {
+
+  const checkboxChange = (name, isChecked) => {
+
     setFormValues({
       ...formValues,
-        [name]: isChecked
-      })
+      toppings: {
+        ...formValues.toppings,
+        [name]: isChecked, // not an array
+      }
+    })
   }
 
   const submit = () => {
     const newUser = {
       name: formValues.name.trim(), // input text field
+      size:formValues.size.trim(),
       sauces: formValues.sauces.trim(),// dropdown
-      toppings: formValues.sauces.trim(), // dropdown
+      toppings: Object.keys(formValues.toppings).filter(tp =>
+        formValues.toppings[tp]), // checkboxes
       instructions: formValues.sauces.trim(), // input text field
-      gluten: formValues.gluten
     }
     postUser(newUser)
   }
@@ -115,7 +137,7 @@ const App = () => {
           <h1 className='store-header'>Lambda Eats</h1>
         </div>
         <div className='nav-links'>
-          <Link to='/form'>Build Your Own Pizza!</Link>
+          <Link to='/pizza'>Build Your Own Pizza!</Link>
         </div>
       </nav>
 
@@ -123,7 +145,7 @@ const App = () => {
         <Home />
       </Route>
 
-    <Route path='/form'>
+    <Route path='/pizza'>
       <Form 
         values={formValues}
         inputChange={inputChange}

@@ -34,10 +34,10 @@ const Form = (props) => {
     return (
         <form className='form container' onSubmit={onSubmit}>
             <div id='formheader'>
-            <h2>Build Your Own Pizza</h2>
+            <h2>Start cookin...</h2>
 
             <div>
-                <h3>Please complete this form to continue. All pizzas come with fresh mozzerella cheese.</h3>
+                <p>Please complete this form to continue. All pizzas come with fresh mozzerella cheese.</p>
             </div>
 
             <div className='register-form inputs'>
@@ -52,7 +52,22 @@ const Form = (props) => {
                 </label>
                 <p id='user-error'>{errors.name}</p>
                 </div>
-
+                <div id='dropBoxes'className='inputDrop-box'></div>
+                <label>Size:&nbsp;
+                    <select id='size-dropdown'
+                        onChange={onInputChange}
+                        value={values.size}
+                        name='size'
+                    >
+                        <option value=''>-Pick a size-</option>
+                        <option value='personal'>Personal</option>
+                        <option value='medium'>Medium</option>
+                        <option value='large'>Large</option>
+                        <option value='mondo'>Mondo</option>
+                    </select>
+                </label>
+                <p id='size-error'>{errors.size}</p>
+                
                 <div id='dropBoxes'className='inputDrop-box'></div>
                 <label>Choice of Sauce:&nbsp;
                     <select id='sauces-dropdown'
@@ -70,23 +85,46 @@ const Form = (props) => {
                 <p id='sauces-error'>{errors.sauces}</p>
                 </div>
 
-                <div id='dropBoxes'className='inputDrop-box'></div>
+                <div id='checkBoxes'className='inputCheck-box'></div>
                 <label>Choose a Topping:&nbsp;
-                    <select id='topping-dropdown'
-                        onChange={onInputChange}
-                        value={values.toppings}
-                        name='toppings'
-                    >
-                        <option value=''>- Select a Topping-</option>
-                        <option value='vegetables'>Vegetables</option>
-                        <option value='pepperoni'>Pepperoni</option>
-                        <option value='clams'>Clams</option>
-                        <option value='ricotta'>Ricotta</option>
-                    </select>
-                </label>
-                <p id='toppings-error'>{errors.toppings}</p>
-                </div>
+                <label>Pepperoni
+                    <input
+                        type="checkbox"
+                        name='pepperoni'
+                        checked={values.toppings.pepperoni === true}
+                        onChange={onCheckboxChange}
+                    />
+                    </label>
 
+                    <label>Clams
+                    <input
+                        type="checkbox"
+                        name='clams'
+                        checked={values.toppings.clams === true}
+                        onChange={onCheckboxChange}
+                    />
+                    </label>
+
+                    <label>Pineapple
+                    <input
+                        type="checkbox"
+                        name='pineapple'
+                        checked={values.toppings.pineapple === true}
+                        onChange={onCheckboxChange}
+                    />
+                    </label>
+
+                    <label>Veggies
+                    <input
+                        type="checkbox"
+                        name='veggies'
+                        checked={values.toppings.veggies === true}
+                        onChange={onCheckboxChange}
+                    />
+                    </label>
+                </label>
+                </div>
+                <br></br>
                 <div id='inputBoxes'className='input-box'>
                 <label>Special Instructions:&nbsp;
                     <input
@@ -99,17 +137,6 @@ const Form = (props) => {
                 <p id='instructions-error'>{errors.instructions}</p>
                 </div>
 
-                <div id='glutenBox'className='input-box'>
-                <label> Make this gluten-free? &nbsp;
-                    <input
-                        type="checkbox"
-                        name='gluten'
-                        checked={values.gluten === true}
-                        onChange={onCheckboxChange}
-                    />
-                </label>
-                </div>
-
                 <div>
                     <br></br>
                     <button id="submitBtn" disabled={disabled}>Place Order</button>
@@ -120,9 +147,7 @@ const Form = (props) => {
                         return <OrderComplete key={user.name} details={user} />
                     })
                 } 
-            </form>
-
-            
+        </form>
     );
 };
 export default Form

@@ -7,21 +7,13 @@ const StyledHome = Styled.div`
     margin: 10% 10%;
     padding: 0% 5%;
 
+
     #image{
         width:100%;
     }
 `
 
 const Home = () => {
-
-    // const {
-    //     values,
-    //     submit,
-    //     inputChange,
-    //     checkboxChange,
-    //     errors,
-    //     disabled,
-    // } = props
 
     return (
     <StyledHome>
