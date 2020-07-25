@@ -31,28 +31,33 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question.
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
-1. How would you explain form validation to someone who has never programmed before?
+React's useRouteMatch hook lets you add nested routes to your application such that you can change a single parameter in the URL without having to change the whole thing. You can also use useRouteMatch to access a match without rendering a Route by passing it the location argument.
+
+2. How would you explain form validation to someone who has never programmed before?
+Form validation checks to see if the whole form is valid or not, this will allow / disallow form submission.
+
 1. In 1-2 sentences, define end to end testing.
+End to end testing basically asks “can a user accomplish an action?”. End to end tests focus on UI and mimic how a user might interact with an app, simulating real events like button clicks, scrolls, form submits, and the like. You can picture end to end tests like imaginary friends, who use your app and point out all the non-intuitive parts, or bugs that a user would encounter while using your website.
 
 ## Instructions
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: `git checkout -b <firstName-lastName>`
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: `git push origin <firstName-lastName>`
+- [ x ] Create a forked copy of this project
+- [ x ] Add your team lead as collaborator on Github
+- [ x ] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [ x ] Create a new branch: `git checkout -b <firstName-lastName>`
+- [ x ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [ x ] Push commits: `git push origin <firstName-lastName>`
 
 ### Task 2: Project Requirements
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
-- [ ] A form with a "/pizza" route
-- [ ] A name text input field
-- [ ] Validation for name - name must be at least 2 characters
+- [ x ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [ x ] A form with a "/pizza" route
+- [ x ] A name text input field
+- [ x ] Validation for name - name must be at least 2 characters
 - [ ] A dropdown for pizza size
 - [ ] A checklist for toppings - at least 4 (hint: name each separately!)
 - [ ] Text input for special instructions
