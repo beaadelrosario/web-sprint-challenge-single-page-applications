@@ -48,9 +48,10 @@ const Form = (props) => {
                         onChange={onInputChange}
                         name='name'
                         type='text'
+                        id='customer'
                     />
                 </label>
-                <p id='user-error'>{errors.name}</p>
+                <p id='usererror'>{errors.name}</p>
                 </div>
                 <div id='dropBoxes'className='inputDrop-box'></div>
                 <label>Size:&nbsp;
@@ -132,14 +133,15 @@ const Form = (props) => {
                         onChange={onInputChange}
                         name='instructions'
                         type='text'
+                        id='instruct'
                     />
                 </label>
-                <p id='instructions-error'>{errors.instructions}</p>
+                <p id='instructerror'>{errors.instructions}</p>
                 </div>
 
                 <div>
                     <br></br>
-                    <button id="submitBtn" disabled={disabled}>Place Order</button>
+                    <button id="orderBtn" disabled={disabled}>Place Order</button>
                 </div>
 
                 {

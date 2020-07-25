@@ -3,7 +3,7 @@ import * as yup from 'yup'
 const formSchema = yup.object().shape({
     name: yup
         .string()
-        .min(2, "Who is ordering?")
+        .min(2, "Please include your first and last name")
         .required("Name is required"),
     size: yup
         .string()
@@ -13,8 +13,8 @@ const formSchema = yup.object().shape({
         .oneOf(['marinara', 'pesto', 'clam', 'white garlic'], "Sauce is required"),
     instructions: yup
         .string()
-        .min(3, "Special Instructions")
-        .required("Please write N/A if there are no special instructions needed")
+        .min(3, "Please write N/A if there are no special instructions needed")
+        .required("Not Required but write n/a")
 })
 
 export default formSchema
